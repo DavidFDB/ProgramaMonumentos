@@ -1,6 +1,9 @@
 import requests
 import json
 import mysql.connector
+import time
+
+time.sleep(20)
 
 
 response = requests.get('https://analisis.datosabiertos.jcyl.es/api/records/1.0/search/?dataset=relacion-monumentos&q=&rows=1000&facet=tipomonumento&facet=clasificacion&facet=tipoconstruccion&facet=periodohistorico&facet=poblacion_provincia')
