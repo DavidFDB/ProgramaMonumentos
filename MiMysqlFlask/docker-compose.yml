@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  pythonapp1:
+    build: ./python/
+    command: sh -c "sleep 10s ; python3 ./programa_monumentos.py"
+    depends_on:
+      - mysql
+
+  pythonapp2:
+    build:
+      context: ./PaginaHTML
+      dockerfile: Dockerfile
+    depends_on:
+      - pythonapp1
+    ports:
+      - '5000:5000'  # Mapea el puerto 5000 del contenedor al puerto 5000 del host
+    environment:
+      - FLASK_APP=crear_pagina.py  # Establece la variable de entorno para Flask
+    command: flask run --host=0.0.0.0
+
+  mysql:
+    build: ./mysql/
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - '3306:3306'

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de monumentos</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#monumentos-table').DataTable({
+                "ajax": {
+                    "url": "/data",
+                    "dataSrc": ""
+                },
+                "columns": [
+                    { "data": "monumento" },
+                    { "data": "tipomonumento" },
+                    { "data": "clasificacion" },
+                    { "data": "tipoconstruccion" },
+                    { "data": "periodohistorico" },
+                    { "data": "poblacion_provincia" }
+                ]
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Lista de monumentos:</h1>
+    <table id="monumentos-table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo de monumento</th>
+                <th>Clasificación</th>
+                <th>Tipo de construcción</th>
+                <th>Periodo</th>
+                <th>Población/Provincia</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</body>
+</html>
